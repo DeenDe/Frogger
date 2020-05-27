@@ -1,7 +1,7 @@
 #ifndef COBJECT_H
 #define COBJECT_H
 
-class cobject
+class cobject // base abstract class for objects
 {
 public:
     cobject();

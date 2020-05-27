@@ -26,25 +26,24 @@
 #define LOG_TEXTURE_Y 30
 #define LOG_TEXTURE_X 80
 
-class cgame
+class cgame //manage all objects and keeps going all game
 {
 public:
     cgame(int difficult);
-    void loop(sf::RenderWindow &window);
-    void load_lanes(int difficult, int length);
-    void game_over();
-    bool check_collision(cmoving_object *obj1, cmoving_object *obj2, int width);
+    void loop(sf::RenderWindow &window); //function that's keeping game going
+    void load_lanes(int difficult, int length); //initialise all lanes and starting objects
+    void game_over(); //end player attempt
+    bool check_collision(cmoving_object *obj1, cmoving_object *obj2, int width); //detecting collision between two objects
     void add_object(int difficult);
-    clog* find_log();
 
 
 private:
     int number_of_water;
     int number_of_streets;
-    std::vector <clane*> lane_list;
-    std::vector <cg_object*> glane_list;
-    std::vector <cmoving_object*> mov_list;
-    std::vector <cg_object*> gmov_list;
+    std::vector <clane*> lane_list; //list of all lines
+    std::vector <cg_object*> glane_list; //list of graphics for lines
+    std::vector <cmoving_object*> mov_list; //list of all moving objects
+    std::vector <cg_object*> gmov_list; //list of graphics for all objects
 };
 
 #endif // CGAME_H

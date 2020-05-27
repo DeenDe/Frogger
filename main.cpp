@@ -8,6 +8,6 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 
- cmenu m(1,1);
+ cmenu m(600,600);
  m.loop();
 }

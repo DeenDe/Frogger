@@ -8,7 +8,6 @@ class cg_log : public cg_object
 public:
     cg_log(clog* log);
     clog* log;
-
 };
 
 

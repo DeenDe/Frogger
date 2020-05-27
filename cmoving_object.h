@@ -3,11 +3,11 @@
 #include "cobject.h"
 #include <iostream>
 
-class cmoving_object : public cobject
+class cmoving_object : public cobject //base class for moving objects
 {
 public:
     cmoving_object();
-    virtual void move(cmoving_object *mov, int length, int height) = 0;
+    virtual void move(cmoving_object *mov, int length, int height) = 0; //use of polymorphizm
     int speed;
     std::string direction;
 };

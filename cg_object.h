@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "cmoving_object.h"
 
-class cg_object
+class cg_object //class for storing graphics for objects
 {
 public:
     cg_object();

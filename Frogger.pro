@@ -40,24 +40,20 @@ SOURCES += \
 
 HEADERS += \
     ccar.h \
-    ccrocodyle.h \
     cfinish.h \
     cfrog.h \
     cg_car.h \
-    cg_crocodyle.h \
     cg_finish.h \
     cg_frog.h \
     cg_lane.h \
     cg_log.h \
     cg_object.h \
-    cg_snake.h \
     cgame.h \
     clane.h \
     clog.h \
     cmenu.h \
     cmoving_object.h \
     cobject.h \
-    csnake.h \
     mainwindow.h
 
 FORMS += \

@@ -5,8 +5,8 @@
 class cfinish : public cobject
 {
 public:
-    cfinish();
-    bool check;
+    cfinish(int x, int y);
+    bool check = 0;
     void add_extra_points();
 };
 

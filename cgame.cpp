@@ -25,11 +25,33 @@ void cgame::load_lanes(int difficult, int height)
     for(int i=0; i<(MIN_NUM_OF_LANES+MIN_NUM_OF_WATER)*difficult+2; i++)
     {        
         clane *lane = new clane(0, height_per_lane*i);
+        cg_lane *w_glane = new cg_lane(lane);
+        glane_list.push_back(w_glane);
+
+        if(i == 0)
+        {
+            w_glane->shape.setFillColor(sf::Color::Blue);
+            cfinish *finish1 = new cfinish(50,0);
+            lane_list.push_back(finish1);
+            cg_finish *gfinish1 = new cg_finish(finish1);
+            glane_list.push_back(gfinish1);
+            cfinish *finish2 = new cfinish(200,0);
+            lane_list.push_back(finish2);
+            cg_finish *gfinish2 = new cg_finish(finish2);
+            glane_list.push_back(gfinish2);
+            cfinish *finish3 = new cfinish(350,0);
+            lane_list.push_back(finish3);
+            cg_finish *gfinish3 = new cg_finish(finish3);
+            glane_list.push_back(gfinish3);
+            cfinish *finish4 = new cfinish(500,0);
+            lane_list.push_back(finish4);
+            cg_finish *gfinish4 = new cg_finish(finish4);
+            glane_list.push_back(gfinish4);
+        }
+
         lane_list.push_back(lane);
 
-        cg_lane *w_glane = new cg_lane(lane);
-        glane_list.push_back(w_glane);        
-        if(i<MIN_NUM_OF_WATER)
+        if(i<MIN_NUM_OF_WATER && i != 0)
         {
             int dirrection = std::rand()%2;
             std::string dir;
@@ -87,7 +109,7 @@ void cgame::load_lanes(int difficult, int height)
 
 }
 
-bool cgame::check_collision(cmoving_object * obj1, cmoving_object *obj2, int width)
+bool cgame::check_collision(cmoving_object * obj1, cobject *obj2, int width)
 {
 
     int frog_left = obj1->x;
@@ -112,10 +134,12 @@ void cgame::loop(sf::RenderWindow &window)
 
     int height = window.getSize().y;
     int height_per_lane = height/(MIN_NUM_OF_LANES+MIN_NUM_OF_WATER+2);
+    window.setFramerateLimit(60);
+
     while(window.isOpen())
     {
         sf::Event event;
-        std::string dir= "null";
+        std::string dir= "null";        
         while(window.pollEvent(event))
         {
             switch (event.type)
@@ -158,7 +182,7 @@ void cgame::loop(sf::RenderWindow &window)
                 {
                     mov_list[0]->x = window.getSize().x/2;
                     mov_list[0]->y = height - height_per_lane + ((height_per_lane - FROG_TEXTURE_Y)/2);
-                    mov_list [0] ->move(mov_list[0], window.getSize().x/2, height - height_per_lane + ((height_per_lane - FROG_TEXTURE_Y)/2));
+                    mov_list[0]->move(mov_list[0], window.getSize().x/2, height - height_per_lane + ((height_per_lane - FROG_TEXTURE_Y)/2));
                     gmov_list[0]->update(gmov_list[0], p->x, p->y);
 
                 }
@@ -174,6 +198,18 @@ void cgame::loop(sf::RenderWindow &window)
 
                 i++;
             }
+            for(int i = 0; i<4; i++)
+            {
+                if(check_collision(mov_list[0], lane_list[i], FINISH_TEXTURE_X))
+                {
+                   this->score += 50;
+                   mov_list[0]->x = window.getSize().x/2;
+                   mov_list[0]->y = height - height_per_lane + ((height_per_lane - FROG_TEXTURE_Y)/2);
+                   mov_list[0]->move(mov_list[0], window.getSize().x/2, height - height_per_lane + ((height_per_lane - FROG_TEXTURE_Y)/2));
+                   gmov_list[0]->update(gmov_list[0], mov_list[0]->x, mov_list[0]->y);
+                }
+            }
+
             if(frog_on_log == 0 && mov_list[0]->y <= height_per_lane*MIN_NUM_OF_WATER)
            {
                 mov_list[0]->x = window.getSize().x/2;
@@ -205,8 +241,7 @@ void cgame::loop(sf::RenderWindow &window)
             for(int j = int(gmov_list.size()) - 1; j >= 0 ; j--)
             {
                 gmov_list[j]->draw(window);
-            }
-
+            }            
             window.display();
             sf::sleep(sf::milliseconds(100));
 

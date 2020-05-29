@@ -1,6 +1,7 @@
 #include "cfinish.h"
 
-cfinish::cfinish()
+cfinish::cfinish(int x, int y)
 {
-
+    this->x = x;
+    this->y = y;
 }

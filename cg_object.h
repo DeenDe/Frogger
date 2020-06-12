@@ -9,7 +9,7 @@ public:
     cg_object();
     void draw(sf::RenderWindow &window);
     sf::RectangleShape load_shape();
-    void update(cg_object *gmov, int x, int y);
+    void update(int x, int y);
 
 //protected:
     sf::RectangleShape shape;

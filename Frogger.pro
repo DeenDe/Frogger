@@ -17,24 +17,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     ccar.cpp \
-    ccrocodyle.cpp \
     cfinish.cpp \
     cfrog.cpp \
     cg_car.cpp \
-    cg_crocodyle.cpp \
     cg_finish.cpp \
     cg_frog.cpp \
     cg_lane.cpp \
     cg_log.cpp \
     cg_object.cpp \
-    cg_snake.cpp \
     cgame.cpp \
     clane.cpp \
     clog.cpp \
     cmenu.cpp \
     cmoving_object.cpp \
     cobject.cpp \
-    csnake.cpp \
     main.cpp \
     mainwindow.cpp
 

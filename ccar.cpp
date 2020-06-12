@@ -2,22 +2,26 @@
 
 ccar::ccar(int x, int y, int speed, std::string dir)
 {
-    this->x = x;
-    this->y = y;
-    this->speed = speed;
-    this->direction = dir;
+    cobject::set_x(x);
+    cobject::set_y(y);
+    cmoving_object::set_speed(speed);
+    cmoving_object::set_direction(dir);
 }
 
-void ccar::move(cmoving_object *mov, int length, int height)
+void ccar::move()
 {
-    if( mov->direction=="left")
+    int pom;
+    if( cmoving_object::get_direction()=="left")
     {
-        mov->x -= mov->speed;
-        if(mov->x<0) mov->x = length;
+        pom = cobject::get_x() - cmoving_object::get_speed();
+        if(pom<0) pom = WINDOW_WIDTH;
+        cobject::set_x(pom);
     }
     else
     {
-        mov->x += mov->speed;
-        if(mov->x>length) mov->x=0;
+
+        pom = cobject::get_x() + cmoving_object::get_speed();
+        if(pom>WINDOW_WIDTH) pom = 0;
+        cobject::set_x(pom);
     }
 }

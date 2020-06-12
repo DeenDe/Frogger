@@ -6,7 +6,7 @@ class clog : public cmoving_object
 {
 public:
     clog(int x, int y, int speed, std::string dir);
-    virtual void move(cmoving_object *mov, int length, int height);
+    virtual void move();
 };
 
 #endif // CLOG_H

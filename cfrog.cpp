@@ -2,32 +2,37 @@
 
 cfrog::cfrog(int x, int y, int speed)
 {
-    this->x = x;
-    this->y = y;
-    this->speed = speed;
-    this->direction = "null";
+    cobject::set_x(x);
+    cobject::set_y(y);
+    cmoving_object::set_speed(speed);
+    cmoving_object::set_direction("null");
 }
 
-void cfrog::move(cmoving_object *mov, int length, int height)
+void cfrog::move()
 {
-    if(mov->direction == "up")
+    int pom;
+    if(cmoving_object::get_direction() == "up")
     {
-        mov->y -= mov->speed;
-        if(mov->y <= 0) mov->y = 0;
+        pom = cobject::get_y() - cmoving_object::get_speed();
+        if(pom <= 0) pom = 0;
+            cobject::set_y(pom);
     }
-    if(mov->direction == "down")
+    if(cmoving_object::get_direction() == "down")
     {
-        mov->y += mov->speed;
-        if(mov->y >= height) mov->y = height;
+        pom = cobject::get_y() + cmoving_object::get_speed();
+        if(pom >= WINDOW_HEIGHT) pom = WINDOW_HEIGHT - FROG_TEXTURE_Y;
+            cobject::set_y(pom);
     }
-    if(mov->direction == "left")
+    if(cmoving_object::get_direction() == "left")
     {
-        mov->x -= mov->speed;
-        if(mov->x <= 0) mov->x = 0;
+        pom = cobject::get_x() - cmoving_object::get_speed();
+        if(pom <= 0) pom = 0;
+            cobject::set_x(pom);
     }
-    if(mov->direction == "right")
+    if(cmoving_object::get_direction() == "right")
     {
-        mov->x += mov->speed;
-        if(mov->x >= length) mov->x = length;
+        pom = cobject::get_x() + cmoving_object::get_speed();
+        if(pom >= WINDOW_WIDTH) pom = WINDOW_WIDTH - FROG_TEXTURE_X;
+            cobject::set_x(pom);
     }
 }

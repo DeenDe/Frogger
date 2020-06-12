@@ -2,6 +2,6 @@
 
 cfinish::cfinish(int x, int y)
 {
-    this->x = x;
-    this->y = y;
+    this->set_x(x);
+    this->set_y(y);
 }

@@ -1,7 +1,15 @@
 #include "clane.h"
 
-clane::clane(int x, int y)
+clane::clane(int x, int y, int type)
 {
-    this->x = x;
-    this->y = y;
+    this->set_x(x);
+    this->set_y(y);
+    this->type = type;
 }
+
+int clane::get_type()
+{
+    return this->type;
+}
+
+

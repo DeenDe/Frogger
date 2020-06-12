@@ -16,7 +16,7 @@
 #include "cg_finish.h"
 #include<iostream>
 
-#define MIN_NUM_OF_CARS 10
+#define MIN_NUM_OF_CARS 5
 #define MIN_NUM_OF_LOGS 10
 #define MIN_NUM_OF_LANES 5
 #define MIN_NUM_OF_WATER 5
@@ -28,20 +28,26 @@
 #define LOG_TEXTURE_Y 30
 #define LOG_TEXTURE_X 80
 #define FINISH_TEXTURE_X 30
+#define FINISH_TEXTURE_Y 30
 
 class cgame //manage all objects and keeps going all game
 {
 public:
     cgame(int difficult);
     void loop(sf::RenderWindow &window); //function that's keeping game going
-    void load_lanes(int difficult, int length); //initialise all lanes and starting objects
+    void load_lanes(); //initialise all lanes and starting objects
     void game_over(); //end player attempt
     bool check_collision(cmoving_object *obj1, cobject *obj2, int width); //detecting collision between two objects
-    void add_object(int difficult);
-    int score = 0;
-
+    int get_score();
+    void add_score(int dod);
+    void del_lane_list();
+    void del_glane_list();
+    void del_mov_list();
+    void del_gmov_list();
 
 private:
+    int score = 0;
+    int difficult;
     int number_of_water;
     int number_of_streets;
     std::vector <cobject*> lane_list; //list of all lines

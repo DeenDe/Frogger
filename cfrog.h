@@ -17,7 +17,7 @@ public:
      */
     cfrog(int x, int y, int speed);
     /**
-     * @brief Witualna funkcja do poruszania obiektami po mapie, z wykorzystaniem polimorfizmu
+     * @brief Funkcja implementujaca sposob poruszania sie zaby
      */
     virtual void move();
 };

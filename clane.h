@@ -5,9 +5,23 @@
 class clane : public cobject
 {
 public:
+    /**
+     * @brief Konstruktor klasy clane
+     * @param x Wspolrzedna x obiektu
+     * @param y Wspolrzedna y obiektu
+     * @param type Rodzaj linii: trawa, woda lub ulica
+     */
     clane(int x, int y, int type);
-    bool spawn_crocodyle(int time);
+    /**
+     * @brief Funkcja zwracajaca typ linii
+     * @return Typ linii
+     */
     int get_type();
+    /**
+     * @brief Funkcja kontrolujaca prawidlowe wpisywanie linii
+     * @param t Typ linii
+     */
+    void set_type(int t);
 private:
     int type; // Define type of lane: grass, water or street
 };

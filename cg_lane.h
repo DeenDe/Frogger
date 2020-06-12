@@ -6,7 +6,14 @@
 class cg_lane : public cg_object
 {
 public:
+    /**
+     * @brief Konstruktor klasy cg_lane
+     * @param lane Wskaznik na obiekt, ktorego dotyczy grafika
+     */
     cg_lane(clane *lane);
+    /**
+     * @brief Wskaznik na obiekt, ktorego dotyczy grafika
+     */
     clane *lane;
 };
 

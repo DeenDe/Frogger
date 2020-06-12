@@ -49,28 +49,22 @@ public:
      */
     void load_highscores(); //loading high scores from file
     /**
-     * @brief save_highscores
-     * @param player
-     * @param score
+     * @brief Funkcja zapisujaca do pliku uzyskany wynik gracza, pod warunkiem, ze jest on lepszy od wszystkich w pliku
+     * @param player Nick gracza
+     * @param score Zdobyte przez gracza punkty
      */
     void save_highscores(std::string player, int score);
     /**
-     * @brief get_nickname
-     * @param window
-     * @return
+     * @brief Funkcja wczytujaca nick gracza
+     * @param window Okno, na ktorym wyswietlamy wprowadzane dane
+     * @return Nick gracza
      */
     std::string get_nickname(sf::RenderWindow &window);
 
 private:
     int selectedItemIndex;
     sf::Font font;
-    /**
-     * @brief Tablica zawierajaca wszystkie wyswietlane opcje oraz najlepsze wyniki
-     */
     sf::Text menu[MAX_NUMBER_OF_OPTIONS+MAX_NUMBER_OF_Highscores];
-    /**
-     * @brief high_scores
-     */
     sf::Text high_scores[MAX_NUMBER_OF_Highscores];
     std::vector<std::string>hs_list;
 

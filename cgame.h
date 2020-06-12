@@ -33,16 +33,53 @@
 class cgame //manage all objects and keeps going all game
 {
 public:
+    /**
+     * @brief Konstruktor klasy cgame
+     * @param difficult Poziom trudności gry
+     */
     cgame(int difficult);
+    /**
+     * @brief Funkcja odpwiedzialna za ciagla prace gry
+     * @param window Okno, na ktorym wyswietlamy gre
+     */
     void loop(sf::RenderWindow &window); //function that's keeping game going
+    /**
+     * @brief Inicjacja poczatkowa wszystkich obiektow na mapie
+     */
     void load_lanes(); //initialise all lanes and starting objects
-    void game_over(); //end player attempt
+    /**
+     * @brief Funkcja sprawdzajaca kolizje miedzy dwoma obiektami
+     * @param obj1 Pierwszy obiekt
+     * @param obj2 Drugi obiekt
+     * @param width Szerokosc obiektu drugiego
+     * @return Prawda jesli wykryto kolizje miedzy obiektami
+     */
     bool check_collision(cmoving_object *obj1, cobject *obj2, int width); //detecting collision between two objects
+    /**
+     * @brief Funkcja zwracajaca wynik
+     * @return Wynik gracza
+     */
     int get_score();
+    /**
+     * @brief Funkcja zwiekszajaca wynik gracza
+     * @param dod Wartosc dodawana do aktualnej liczby punktow
+     */
     void add_score(int dod);
+    /**
+     * @brief Funkcja usuwajaca vector linii i obiektow nieruchomych
+     */
     void del_lane_list();
+    /**
+     * @brief Funkcja usuwajaca vector grafik linii i obiektow nieruchomych
+     */
     void del_glane_list();
+    /**
+     * @brief Funkcja usuwajaca vector obiektow ruchomych
+     */
     void del_mov_list();
+    /**
+     * @brief Funkcja usuwajaca vector grafik obiektow ruchomych
+     */
     void del_gmov_list();
 
 private:

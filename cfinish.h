@@ -5,9 +5,12 @@
 class cfinish : public cobject
 {
 public:
+    /**
+     * @brief Konstruktor klasy cfinish
+     * @param x Wspolrzedna x obiektu
+     * @param y Wspolrzedna y obiektu
+     */
     cfinish(int x, int y);
-    bool check = 0;
-    void add_extra_points();
 };
 
 #endif // CFINISH_H

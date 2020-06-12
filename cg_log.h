@@ -6,7 +6,14 @@
 class cg_log : public cg_object
 {
 public:
+    /**
+     * @brief Konstruktor klasy cg_log
+     * @param Wskaznik na obiekt, ktorego dotyczy grafika
+     */
     cg_log(clog* log);
+    /**
+     * @brief Wskaznik na obiekt, ktorego dotyczy grafika
+     */
     clog* log;
 };
 

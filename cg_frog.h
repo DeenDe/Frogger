@@ -6,7 +6,14 @@
 class cg_frog : public cg_object
 {
 public:
+    /**
+     * @brief Konstruktor klasy cg_frog
+     * @param frog Wskaznik na obiekt, ktorego dotyczy grafika
+     */
     cg_frog(cfrog *frog);
+    /**
+     * @brief Wskaznik na obiekt, ktorego dotyczy grafika
+     */
     cfrog *frog;
 };
 

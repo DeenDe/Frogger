@@ -173,7 +173,7 @@ bool cgame::check_collision(cmoving_object * obj1, cobject *obj2, int width)
     int obj_left = obj2->get_x();
     int obj_right = obj2->get_x() + width;
     int obj_up = obj2->get_y();
-    int obj_down = obj2->get_y() + 30;
+    int obj_down = obj2->get_y() + CAR_TEXTURE_Y;
 
     if (frog_left < obj_right && frog_right > obj_left && frog_up < obj_down && frog_down > obj_up) return true;
 

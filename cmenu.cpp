@@ -74,6 +74,7 @@ void cmenu::MoveDown(int range)
 
 void cmenu::load_highscores()
 {
+    hs_list.clear();
     int width = WINDOW_WIDTH;
     int height = WINDOW_HEIGHT;
     std::fstream file;
@@ -106,7 +107,7 @@ void cmenu::load_highscores()
 void cmenu::save_highscores(std::string player, int score)
 {
     int pom = -1;
-    int size = hs_list.size() - 1;
+    int size = hs_list.size()-1;
     bool space = 0;
     std::string last = "";
     for(int j = 0; j< int(hs_list[size].size()); j++)
@@ -127,16 +128,17 @@ void cmenu::save_highscores(std::string player, int score)
         bool space = 0;
         for(int j = 0; j< int(hs_list[i].size()); j++)
         {
-            if(hs_list[i][j] == ' ')
-                space = 1;
             if(space == 1)
             {
                 pom2.push_back(hs_list[i][j]);
             }
+
+            if(hs_list[i][j] == ' ')
+                space = 1;
         }
-        if(std::stoi(pom2) > score && i != int(hs_list.size() - 1))
+        if(std::stoi(pom2) > score && i != int(hs_list.size() - 1) && pom == -1)
             pom = i + 1;
-        if(i==0 && std::stoi(pom2) < score)
+        if(i==0 && std::stoi(pom2) <= score && pom == -1)
             pom = 0;
     }
     for(int i = size; i >=0; i--)
@@ -146,14 +148,14 @@ void cmenu::save_highscores(std::string player, int score)
             hs_list[i] = hs_list[i-1];
         }
     }
-    if(pom > 0)
+    if(pom >= 0)
     {
         hs_list[pom] = player + " " + std::to_string(score);
     }
 
     std::fstream file;
     file.open("high_scores.txt", std::ios::out);
-    for(int i = 0; i < int(hs_list.size()); i++)
+    for(int i = 0; i < MAX_NUMBER_OF_Highscores; i++)
     {
         file<<hs_list[i]<<std::endl;
     }
